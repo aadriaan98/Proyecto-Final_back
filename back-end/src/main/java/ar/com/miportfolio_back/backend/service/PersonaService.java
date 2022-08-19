@@ -11,6 +11,7 @@ public class PersonaService implements IPersonaService{
     
     @Autowired
     public IPersonaRepo iPersoRepo;
+    
     @Override
     public List<Persona> verPersona() {
         return iPersoRepo.findAll();
@@ -29,6 +30,5 @@ public class PersonaService implements IPersonaService{
     @Override
     public Persona buscarPersona(Long id) {
         return iPersoRepo.findById(id).orElse(null);
-    }
-    
+    }    
 }
