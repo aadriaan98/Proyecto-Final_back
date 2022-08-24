@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IPersonaService {
     //traer
-    public List<Persona> verPersona();
+    public List<Persona> traerPersona();
     
     //guardar
     public void crearPersona(Persona pers);

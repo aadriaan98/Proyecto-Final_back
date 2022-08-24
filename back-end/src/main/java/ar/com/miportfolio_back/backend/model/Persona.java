@@ -14,12 +14,16 @@ import lombok.Setter;
 public class Persona {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @NotNull
     private String nombre;
+    
     @NotNull
     private String apellido;
+    
+    @NotNull
     private String edad;
     
     public Persona(){
