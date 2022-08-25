@@ -6,14 +6,15 @@ import java.util.List;
 
 public interface IPersonaService {
      //traer
-    public List<Persona> traerPersona();
+    public List<Persona> getPersona();
     
     //guardar
-    public void crearPersona(Persona pers);
+    public void savePersona(Persona pers);
     
     //eliminar 
-    public void borrarPersona(Long id);
+    public void deletePersona(Long id);
     
     //buscar
-    public Persona buscarPersona(Long id);
+    public Persona findPersona(Long id);
+
 }

@@ -9,29 +9,29 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonaService implements IPersonaService{
 
-    @Autowired
-    public IPersonaRepo iPersoRepo;
-    
+    @Autowired IPersonaRepo iPersoRepo; 
+  
     @Override
-    public List<Persona> traerPersona() {
+    public List<Persona> getPersona() {
         List<Persona> pers = iPersoRepo.findAll();
         return pers;
     }
 
     @Override
-    public void crearPersona(Persona pers) {
+    public void savePersona(Persona pers) {
         iPersoRepo.save(pers);
     }
 
     @Override
-    public void borrarPersona(Long id) {
+    public void deletePersona(Long id) {
         iPersoRepo.deleteById(id);
     }
 
     @Override
-    public Persona buscarPersona(Long id) {
+    public Persona findPersona(Long id) {
         Persona pers = iPersoRepo.findById(id).orElse(null);
         return pers;
-    }    
+    }
+
     
 }

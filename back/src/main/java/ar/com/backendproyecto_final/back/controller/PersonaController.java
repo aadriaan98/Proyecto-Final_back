@@ -19,44 +19,46 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class PersonaController {
-    @Autowired
-    private IPersonaService persoServ;
+    
+    @Autowired IPersonaService persoServ;
     
     @GetMapping("/personas/traer")
     @ResponseBody
     public List<Persona> traerPersona(){
-        return persoServ.traerPersona();
+        return persoServ.getPersona();
     }
     
     @PostMapping("/personas/crear")
-    public void agregarPersona(@RequestBody Persona pers){
-        persoServ.crearPersona(pers);
+    public String agregarPersona(@RequestBody Persona pers){
+        persoServ.savePersona(pers);
+        return "La persona fue creada";
     }
     
     @DeleteMapping("/personas/borrar{id}")
-    public void borrarPersona(@PathVariable Long id){
-        persoServ.borrarPersona(id);
+    public String borrarPersona(@PathVariable Long id){
+        persoServ.deletePersona(id);
+        return "La persona fue eliminada";
     }
     
     @PutMapping("/personas/editar/{id}")
     public Persona editarPersona(@PathVariable Long id,
-                             @RequestParam("nombre") String nuevoNombre,
-                             @RequestParam("apellido") String nuevoApellido,
-                             @RequestParam("edad") String nuevaEdad){
+                                 @RequestParam("nombre") String nuevoNombre,
+                                 @RequestParam("apellido") String nuevoApellido,
+                                 @RequestParam("edad") String nuevaEdad){
       
-      Persona pers = persoServ.buscarPersona(id);
+      Persona pers = persoServ.findPersona(id);
       
       pers.setNombre(nuevoNombre);
       pers.setApellido(nuevoApellido);
       pers.setEdad(nuevaEdad);
       
-      persoServ.crearPersona(pers);
+      persoServ.savePersona(pers);
       
       return pers;
     }
     
     @GetMapping("personas/traer/perfil")
     public Persona traerPerfil(){
-        return persoServ.buscarPersona((long)1);
+        return persoServ.findPersona((long)1);
     }
 }

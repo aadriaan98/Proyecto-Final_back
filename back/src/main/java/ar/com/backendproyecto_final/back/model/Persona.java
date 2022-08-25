@@ -1,10 +1,10 @@
 package ar.com.backendproyecto_final.back.model;
 
-import com.sun.istack.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,13 +25,4 @@ public class Persona {
     @NotNull
     private String edad;
     
-    public Persona(){
-    }
-    
-    public Persona(Long id, String nombre, String apellido, String edad ){
-        this.id=id;
-        this.nombre= nombre;
-        this.apellido=apellido;
-        this.edad=edad;
-    }
 }
