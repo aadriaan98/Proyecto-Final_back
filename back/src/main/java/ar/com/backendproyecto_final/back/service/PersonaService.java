@@ -1,14 +1,14 @@
-package ar.com.miportfolio_back.backend.service;
+package ar.com.backendproyecto_final.back.service;
 
-import ar.com.miportfolio_back.backend.model.Persona;
-import ar.com.miportfolio_back.backend.repository.IPersonaRepo;
+import ar.com.backendproyecto_final.back.model.Persona;
+import ar.com.backendproyecto_final.back.repository.IPersonaRepo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PersonaService implements IPersonaService{
-    
+
     @Autowired
     public IPersonaRepo iPersoRepo;
     
@@ -33,4 +33,5 @@ public class PersonaService implements IPersonaService{
         Persona pers = iPersoRepo.findById(id).orElse(null);
         return pers;
     }    
+    
 }

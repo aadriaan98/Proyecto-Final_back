@@ -1,7 +1,8 @@
-package ar.com.miportfolio_back.backend.controller;
+package ar.com.backendproyecto_final.back.controller;
 
-import ar.com.miportfolio_back.backend.model.Persona;
-import ar.com.miportfolio_back.backend.service.IPersonaService;
+
+import ar.com.backendproyecto_final.back.model.Persona;
+import ar.com.backendproyecto_final.back.service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class PersonaController {
-    
     @Autowired
     private IPersonaService persoServ;
     
@@ -59,5 +59,4 @@ public class PersonaController {
     public Persona traerPerfil(){
         return persoServ.buscarPersona((long)1);
     }
-    
 }

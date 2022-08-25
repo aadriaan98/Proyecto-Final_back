@@ -1,4 +1,4 @@
-package ar.com.miportfolio_back.backend.model;
+package ar.com.backendproyecto_final.back.model;
 
 import com.sun.istack.NotNull;
 import javax.persistence.Entity;
@@ -10,9 +10,8 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-
 public class Persona {
-    
+        
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

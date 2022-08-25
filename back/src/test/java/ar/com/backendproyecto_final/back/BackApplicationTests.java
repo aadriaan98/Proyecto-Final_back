@@ -1,10 +1,10 @@
-package ar.com.miportfolio_back.backend;
+package ar.com.backendproyecto_final.back;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackEndApplicationTests {
+class BackApplicationTests {
 
 	@Test
 	void contextLoads() {

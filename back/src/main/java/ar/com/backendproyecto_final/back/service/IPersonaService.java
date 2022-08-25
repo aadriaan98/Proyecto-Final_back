@@ -1,11 +1,11 @@
-package ar.com.miportfolio_back.backend.service;
+package ar.com.backendproyecto_final.back.service;
 
-import ar.com.miportfolio_back.backend.model.Persona;
+import ar.com.backendproyecto_final.back.model.Persona;
 import java.util.List;
 
 
 public interface IPersonaService {
-    //traer
+     //traer
     public List<Persona> traerPersona();
     
     //guardar
