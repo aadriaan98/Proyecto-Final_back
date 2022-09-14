@@ -5,6 +5,7 @@ import ar.com.backendproyecto_final.back.model.Persona;
 import ar.com.backendproyecto_final.back.service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,18 +29,21 @@ public class PersonaController {
         return persoServ.getPersona();
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/personas/crear")
     public String agregarPersona(@RequestBody Persona pers){
         persoServ.savePersona(pers);
         return "La persona fue creada";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/personas/borrar{id}")
     public String borrarPersona(@PathVariable Long id){
         persoServ.deletePersona(id);
         return "La persona fue eliminada";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/personas/editar/{id}")
     public Persona editarPersona(@PathVariable Long id,
                                  @RequestParam("nombre") String nuevoNombre,
