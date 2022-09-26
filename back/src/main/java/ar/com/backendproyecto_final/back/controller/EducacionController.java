@@ -48,18 +48,23 @@ public class EducacionController {
             return new ResponseEntity(new Msj("no existe esa id"), HttpStatus.NOT_FOUND);
         }
         eduServ.delete(id);
-        return new ResponseEntity(new Msj("educacion eliminada con exito"), HttpStatus.OK);
+        return new ResponseEntity(new Msj("educacion eliminada"), HttpStatus.OK);
     }
     
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody EducacionDto edDto){
         if(StringUtils.isBlank(edDto.getNombreEd())){
             return new ResponseEntity(new Msj("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        }if(eduServ.existsByNombreEd(edDto.getNombreEd())){
+        }
+        if(eduServ.existsByNombreEd(edDto.getNombreEd())){
             return new ResponseEntity(new Msj("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
+        
+        
         Educacion edu = new Educacion(edDto.getNombreEd(), edDto.getDescripcionEd());
+        
         eduServ.save(edu);
+        
         return new ResponseEntity(new Msj("educacion creada con exito"), HttpStatus.OK);
     } 
     
@@ -67,9 +72,11 @@ public class EducacionController {
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody EducacionDto edDto){
         if(!eduServ.existsById(id)){
             return new ResponseEntity(new Msj("no existe esa id"), HttpStatus.NOT_FOUND);
-        }if(eduServ.existsByNombreEd(edDto.getNombreEd()) && eduServ.getByNombreEd(edDto.getNombreEd()).get().getId() != id){
+        }
+        if(eduServ.existsByNombreEd(edDto.getNombreEd()) && eduServ.getByNombreEd(edDto.getNombreEd()).get().getId() != id){
             return new ResponseEntity(new Msj("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        }if(StringUtils.isBlank(edDto.getNombreEd())){
+        }
+        if(StringUtils.isBlank(edDto.getNombreEd())){
             return new ResponseEntity(new Msj("el campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
         }
         Educacion edu = eduServ.getOne(id).get();
