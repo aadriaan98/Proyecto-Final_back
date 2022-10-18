@@ -2,9 +2,8 @@ package ar.com.backendproyecto_final.back.dto;
 
 import javax.validation.constraints.NotBlank;
 
-
 public class EducacionDto {
-    
+
     @NotBlank
     private String nombreEd;
     @NotBlank
@@ -33,6 +32,5 @@ public class EducacionDto {
     public void setDescripcionEd(String descripcionEd) {
         this.descripcionEd = descripcionEd;
     }
-    
-    
+
 }

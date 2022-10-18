@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Skills {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -46,6 +46,4 @@ public class Skills {
         this.porcentaje = porcentaje;
     }
 
-    
-  
 }

@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonaService implements IPersonaService{
+public class PersonaService implements IPersonaService {
 
-    @Autowired IPersonaRepo iPersoRepo; 
-  
+    @Autowired
+    IPersonaRepo iPersoRepo;
+
     @Override
     public List<Persona> getPersona() {
         List<Persona> pers = iPersoRepo.findAll();
@@ -33,5 +34,4 @@ public class PersonaService implements IPersonaService{
         return pers;
     }
 
-    
 }

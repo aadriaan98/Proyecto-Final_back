@@ -3,10 +3,8 @@ package ar.com.backendproyecto_final.back.security.dto;
 import java.util.HashSet;
 import java.util.Set;
 
-
 public class NuevoUsuario {
-    
-    
+
     private String nombre;
     private String nombreUsuario;
     private String email;
@@ -52,6 +50,5 @@ public class NuevoUsuario {
     public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
-    
-    
+
 }

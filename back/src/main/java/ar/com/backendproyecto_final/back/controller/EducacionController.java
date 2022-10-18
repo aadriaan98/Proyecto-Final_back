@@ -19,72 +19,71 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping("/educacion")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://front-portfolio-adrian.web.app")
 public class EducacionController {
-    
-    @Autowired EducacionService eduServ;
-    
+
+    @Autowired
+    EducacionService eduServ;
+
     @GetMapping("/lista")
-    public ResponseEntity<List<Educacion>> list(){
+    public ResponseEntity<List<Educacion>> list() {
         List<Educacion> list = eduServ.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
-    
+
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Educacion> getById(@PathVariable("id") int id){
-        if(!eduServ.existsById(id)){
+    public ResponseEntity<Educacion> getById(@PathVariable("id") int id) {
+        if (!eduServ.existsById(id)) {
             return new ResponseEntity(new Msj("no existe esa id"), HttpStatus.BAD_REQUEST);
         }
         Educacion edu = eduServ.getOne(id).get();
         return new ResponseEntity(edu, HttpStatus.OK);
     }
-    
+
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") int id){
-        if(!eduServ.existsById(id)){
+    public ResponseEntity<?> delete(@PathVariable("id") int id) {
+        if (!eduServ.existsById(id)) {
             return new ResponseEntity(new Msj("no existe esa id"), HttpStatus.NOT_FOUND);
         }
         eduServ.delete(id);
         return new ResponseEntity(new Msj("educacion eliminada"), HttpStatus.OK);
     }
-    
+
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody EducacionDto edDto){
-        if(StringUtils.isBlank(edDto.getNombreEd())){
+    public ResponseEntity<?> create(@RequestBody EducacionDto edDto) {
+        if (StringUtils.isBlank(edDto.getNombreEd())) {
             return new ResponseEntity(new Msj("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        if(eduServ.existsByNombreEd(edDto.getNombreEd())){
+        if (eduServ.existsByNombreEd(edDto.getNombreEd())) {
             return new ResponseEntity(new Msj("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-        
-        
+
         Educacion edu = new Educacion(edDto.getNombreEd(), edDto.getDescripcionEd());
-        
+
         eduServ.save(edu);
-        
+
         return new ResponseEntity(new Msj("educacion creada con exito"), HttpStatus.OK);
-    } 
-    
+    }
+
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody EducacionDto edDto){
-        if(!eduServ.existsById(id)){
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody EducacionDto edDto) {
+        if (!eduServ.existsById(id)) {
             return new ResponseEntity(new Msj("no existe esa id"), HttpStatus.NOT_FOUND);
         }
-        if(eduServ.existsByNombreEd(edDto.getNombreEd()) && eduServ.getByNombreEd(edDto.getNombreEd()).get().getId() != id){
+        if (eduServ.existsByNombreEd(edDto.getNombreEd()) && eduServ.getByNombreEd(edDto.getNombreEd()).get().getId() != id) {
             return new ResponseEntity(new Msj("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-        if(StringUtils.isBlank(edDto.getNombreEd())){
+        if (StringUtils.isBlank(edDto.getNombreEd())) {
             return new ResponseEntity(new Msj("el campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
         }
         Educacion edu = eduServ.getOne(id).get();
         edu.setNombreEd(edDto.getNombreEd());
         edu.setDescripcionEd(edDto.getDescripcionEd());
-        
+
         eduServ.save(edu);
-        
+
         return new ResponseEntity(new Msj("educacion modificada con exito"), HttpStatus.OK);
     }
 }

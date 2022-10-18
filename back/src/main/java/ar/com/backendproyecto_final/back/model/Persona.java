@@ -8,21 +8,22 @@ import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
 public class Persona {
-        
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @NotNull
     private String nombre;
-    
+
     @NotNull
     private String apellido;
-    
+
     @NotNull
     private String edad;
-    
+
 }

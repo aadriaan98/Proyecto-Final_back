@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface iRolRepo extends JpaRepository<Rol, Integer>{
+public interface iRolRepo extends JpaRepository<Rol, Integer> {
+
     Optional<Rol> findByRolNombre(RolNombre rolNombre);
 }

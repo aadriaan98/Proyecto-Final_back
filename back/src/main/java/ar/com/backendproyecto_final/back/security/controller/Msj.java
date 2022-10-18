@@ -1,9 +1,9 @@
 package ar.com.backendproyecto_final.back.security.controller;
 
-
 public class Msj {
+
     private String msj;
-    
+
     public Msj() {
     }
 

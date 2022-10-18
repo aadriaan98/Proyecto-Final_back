@@ -2,9 +2,8 @@ package ar.com.backendproyecto_final.back.dto;
 
 import javax.validation.constraints.NotBlank;
 
-
 public class SkillsDto {
-    
+
     @NotBlank
     private String nombreS;
     @NotBlank
@@ -34,7 +33,4 @@ public class SkillsDto {
         this.porcentaje = porcentaje;
     }
 
-    
-    
-    
 }
